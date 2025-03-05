@@ -1,0 +1,36 @@
+let colores= ["rgb(250,250,78)", "rgb(253,117,140)", "rgb(126,255,126)"]
+let c= 0
+let x = 0
+let y = 0
+let s = 0
+
+function setup() {
+  createCanvas(400, 400);
+  x = random(10, width);
+  y = random(0, height - 10);
+  c = random(colores);
+  s = random(10, 50);
+}
+
+function draw() {
+  //background(220);
+  
+  fill(c);
+  noStroke();
+  
+  circle(x, y, s);
+  x = x - 3; 
+  y = y + 1; 
+  
+  if (x < 0) {
+    x = width; 
+    c = random(colores);
+    s = random(10, 50);
+  }
+  
+  if (y > height) {
+    y = 0;
+    c = random(colores);
+    s = random(40, 100);
+  }
+}
