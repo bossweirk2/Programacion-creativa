@@ -1,0 +1,30 @@
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+ // background(220);
+
+  if (frameCount % 10 === 0) { 
+    let x = random(0, width);
+    let y = random(0, height);
+    let s = random(10, 90);
+    let colores = ["rgb(117,1,1)", "rgb(241,161,161)", "rgb(8,253,243)", "rgb(136,135,135)", "pink"];
+    let c = random(colores);
+
+    noStroke();
+    fill(c);
+
+    if (y < 200) {
+      s = random(30, 50);
+    } else {
+      s = random(1, 30);
+    }
+
+    if (x > 200) {
+      circle(x, y, s);
+    } else {
+      square(x, y, s);
+    }
+  }
+}
