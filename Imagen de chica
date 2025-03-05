@@ -1,0 +1,60 @@
+let img;
+let puntos;
+
+function preload(){
+  
+  img = loadImage("chica.jpg");
+}
+
+function setup() {
+  createCanvas(500, 700);
+  
+  img.resize(500,700)
+  
+  puntos = [];
+  for(let i = 0; i < 3000; i++){
+    let x = random(0, width)
+    let y = random(0, height)
+    let col= img.get (x,y)
+    
+    let p = {
+      x: random(0,width),
+      y: random(0,height),
+      s:random (5),
+      col: col,
+      
+    };
+    puntos.push(p);
+    
+  }
+ // noLoop();
+}
+
+function draw() {
+
+  
+ // image (img, 0,0, width, height)
+  
+  noStroke();
+  
+  if(frameCount % 4 == 0){
+    
+    for( let p of puntos){
+      
+      p.x = random(0,width);
+      p.y = random(0, height);
+      p.col = img.get (p.x,p.y);
+      
+    }
+    
+  }
+  for (let p of puntos){
+    fill(p.col);
+    
+    p.x = p.x + 1;
+    p.y++;
+    
+    circle(p.x, p.y, p.s);
+    
+  }
+}
