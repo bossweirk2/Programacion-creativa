@@ -1,0 +1,54 @@
+let punto;
+let colores;
+let puntos;
+
+
+function setup() {
+  createCanvas(400, 400);
+  
+  colores = ['rgb(248,144,144)', 'rgb(248,162,248)', 'rgb(11,11,148)', 'rgb(236,16,202)', 'rgb(165,6,252)', 'rgb(0,189,250)']
+  
+  puntos = [];
+  
+  for(let i = 0; i < 100; i++) { 
+    //for(inicialización; condiciónñ incremento) {}
+    //for(let punto of nombre arreglo) {}
+    
+  punto = {
+    x: random(0, width), //Propiedad
+    y: random(0, height),
+    col: random(colores),
+    s: random (50, 70),
+    vx: random(-2, 2),
+    vy: random(-2, 2)
+  };
+    
+    puntos.push(punto);
+ }
+}
+
+function draw() {
+  background(20);
+  
+  noStroke()
+  
+  for(let punto of puntos){
+    fill(punto.col);
+    circle(punto.x, punto.y, punto.s);
+    
+    punto.x = punto.x + punto.vx;
+    punto.y = punto.y + punto.vy;
+    
+    
+    if(punto.x < 0 || punto.x > width ){     // or = ||
+      punto.vx = punto.vx * -2;
+      
+    }
+    
+    if(punto.y < 0 || punto.y > height){
+      punto.vy = punto.vy * -2;
+    }
+    
+  }
+ 
+}
